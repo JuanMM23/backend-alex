@@ -13,4 +13,10 @@ public interface GameApi {
 
     @GetMapping("/{id}")
     ResponseEntity<Game> getById(@PathVariable("id") Long id);
+
+    @PutMapping("/{id}")
+    ResponseEntity<Game> update(@PathVariable("id") Long id, @RequestBody Game game);
+
+    @DeleteMapping("/{id}")
+    ResponseEntity<Void> deleteById(@PathVariable("id") Long id);
 }

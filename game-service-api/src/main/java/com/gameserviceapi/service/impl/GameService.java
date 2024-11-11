@@ -21,6 +21,22 @@ public class GameService implements IGameService {
 
     @Override
     public Game getById(Long gameId) {
+        return getGame(gameId);
+    }
+
+    private Game getGame(Long gameId) {
         return gameRepository.findById(gameId).orElseThrow(() -> new GameException(HttpStatus.NOT_FOUND, "Not found"));
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        gameRepository.deleteById(id);
+    }
+
+    @Override
+    public Game update(Long gameId, Game game) {
+        Game gameToUpdate = getGame(gameId);
+        gameToUpdate.setName(game.getName());
+        return gameRepository.save(game);
     }
 }
