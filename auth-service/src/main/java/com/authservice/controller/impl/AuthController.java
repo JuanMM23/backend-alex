@@ -17,4 +17,18 @@ public class AuthController implements AuthApi {
     public ResponseEntity<TokenResponse> createUser(UserRequest userRequest) {
         return ResponseEntity.ok(authService.createUser(userRequest));
     }
+
+    @Override
+    public ResponseEntity<String> getUser(String userId) {
+        return ResponseEntity.ok(userId);
+    }
 }
+
+/*Proyecto 2:
+
+Auth de usuarios otro microservicio que se encarge de solo la autenticación de estos
+
+nuevos endpoints:
+
+auth/register/ tiene que devolver un token jwt con el id del usuario, guardar usuario y cifrar contraseña en la bbdd
+auth/Login/ tiene que devolver un token jwt con el id del usuario, comprobar si existe, comprobar email y contraseña cifrada de bbdd*/
