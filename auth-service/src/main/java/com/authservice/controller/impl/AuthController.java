@@ -19,6 +19,11 @@ public class AuthController implements AuthApi {
     }
 
     @Override
+    public ResponseEntity<TokenResponse> loginUser(UserRequest userRequest) {
+        return null;
+    }
+
+    @Override
     public ResponseEntity<String> getUser(String userId) {
         return ResponseEntity.ok(userId);
     }
