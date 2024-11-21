@@ -39,9 +39,9 @@ public class JwtService implements IJwtService {
     @Override
     public Claims getClaims(String token) {
         return Jwts.parser()
-                .setSigningKey(secretToken) // Clave secreta para validar el token
+                .setSigningKey(secretToken)
                 .build()
-                .parseClaimsJws(token) // Analizar el token y obtener los claims
+                .parseClaimsJws(token)
                 .getBody();
     }
 

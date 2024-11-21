@@ -7,6 +7,7 @@ import com.authservice.repository.UserRepository;
 import com.authservice.service.IAuthService;
 import com.authservice.service.IJwtService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,6 +18,7 @@ public class AuthService implements IAuthService {
 
     private UserRepository userRepository;
     private IJwtService jwtService;
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public TokenResponse createUser(UserRequest userRequest) {
@@ -30,7 +32,7 @@ public class AuthService implements IAuthService {
     private UserModel mapToEntity(UserRequest userRequest) {
         return UserModel.builder()
                 .email(userRequest.getEmail())
-                .password(userRequest.getPassword())
+                .password(passwordEncoder.encode(userRequest.getPassword()))
                 .rol("USER")
                 .build();
     }

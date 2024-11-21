@@ -4,6 +4,7 @@ import com.authservice.common.dto.TokenResponse;
 import com.authservice.common.dto.UserRequest;
 import com.authservice.controller.AuthApi;
 import com.authservice.service.impl.AuthService;
+import com.authservice.service.impl.UserDetailsServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController implements AuthApi {
 
     private final AuthService authService;
+    private final UserDetailsServiceImpl userDetailsService;
+
     @Override
     public ResponseEntity<TokenResponse> createUser(UserRequest userRequest) {
         return ResponseEntity.ok(authService.createUser(userRequest));
@@ -20,7 +23,7 @@ public class AuthController implements AuthApi {
 
     @Override
     public ResponseEntity<TokenResponse> loginUser(UserRequest userRequest) {
-        return null;
+        return ResponseEntity.ok(userDetailsService.login(userRequest));
     }
 
     @Override
