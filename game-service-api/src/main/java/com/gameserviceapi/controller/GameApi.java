@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 public interface GameApi {
 
     @PostMapping
-    ResponseEntity<Game> save(@RequestBody Game game);
+    ResponseEntity<Game> save(@RequestBody Game game, @RequestHeader(name = "userIdRequest") String userId);
 
     @GetMapping("/{id}")
     ResponseEntity<Game> getById(@PathVariable("id") Long id);
