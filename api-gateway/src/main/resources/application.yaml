@@ -1,4 +1,7 @@
 spring:
+  webflux:
+    server:
+      max-http-header-size: 16384
   cloud:
     gateway:
       routes:
@@ -7,7 +10,7 @@ spring:
           predicates:
             - Path=/v1/auth/**
         - id: game-route
-          uri: http://localhost:8080
+          uri: http://localhost:8082
           predicates:
             - Path=/v1/games/**
           filters:
@@ -21,3 +24,5 @@ spring:
         show-details: always
       gateway:
         enabled: true
+
+

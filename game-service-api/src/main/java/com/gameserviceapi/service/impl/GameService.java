@@ -15,7 +15,8 @@ public class GameService implements IGameService {
     private final GameRepository gameRepository;
 
     @Override
-    public Game saveById(Game game) {
+    public Game saveById(Game game, String userId) {
+        game.setUserId(Integer.parseInt(userId));
         return gameRepository.save(game);
     }
 

@@ -17,7 +17,7 @@ public class GameController implements GameApi {
     @Override
     public ResponseEntity<Game> save(@RequestBody Game game, @RequestHeader(name = "userIdRequest") String userId) {
         System.out.println(userId);
-        return new ResponseEntity<>(gameService.saveById(game), HttpStatus.CREATED);
+        return new ResponseEntity<>(gameService.saveById(game, userId), HttpStatus.CREATED);
     }
 
     @Override
